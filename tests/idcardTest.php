@@ -14,8 +14,8 @@ class idcardTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $actual->idcard_front("media/id-card-front.jpg");
-
+      $actual-> idcard_front("media/id-card-front.jpg");
+      
       $expect = new api;
       $expect-> idcard_front("media/id-card-front.jpg");
         // Assert function to test whether expected

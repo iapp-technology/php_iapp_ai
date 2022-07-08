@@ -1,11 +1,12 @@
 <?php 
+use \PHPUnit\Framework\TestCase;
 
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class facerecogTest extends \PHPUnit\Framework\TestCase{
+class facerecogTest extends TestCase{
  
   public function testFaceRecogSingle()
     {
@@ -16,7 +17,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_single("media/face.jpg", "iApp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Single API is not working.");
     }
     public function testFaceRecogMulti()
     {
@@ -27,7 +28,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_multi("media/face.jpg", "iApp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Multi API is not working.");
     }
 
     public function testFaceRecogFacecrop()
@@ -39,7 +40,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_facecrop("media/face.jpg", "iApp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Facecrop API is not working.");
     }
 
     public function testFaceRecogAdd()
@@ -51,7 +52,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_add("media/face.jpg", "iApp", "Panupong", "1234");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Add API is not working.");
     }
 
     public function testFaceRecogImport()
@@ -63,7 +64,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_import("media/face.jpg", "iApp", "1234");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Import API is not working.");
     }
     public function testFaceRecogCheck()
     {
@@ -74,7 +75,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_check("iApp", "1234");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Check API is not working.");
     }
     public function testFaceRecogExport()
     {
@@ -85,7 +86,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_export("iApp", "1234");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Export API is not working.");
     }
     public function testFaceRecogRemove()
     {
@@ -96,7 +97,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_remove("iApp", "Panupong","1234","211026", "211026-3" );
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Remove API is not working.");
     }
 
     public function testFaceRecogConfig()
@@ -108,7 +109,7 @@ class facerecogTest extends \PHPUnit\Framework\TestCase{
       $expect->face_recog_config("0.5","0.5","iApp", "iapp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Recog Config API is not working.");
     }
 }
 

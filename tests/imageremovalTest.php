@@ -1,11 +1,11 @@
 <?php 
-
+use\PHPUnit\Framework\TestCase; 
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class imageremovalTest extends \PHPUnit\Framework\TestCase{
+class imageremovalTest extends TestCase{
  
   public function testImageRemoval()
     {
@@ -16,7 +16,7 @@ class imageremovalTest extends \PHPUnit\Framework\TestCase{
       $expect->img_bg_removal("media/face.jpg");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Image BG Removal API is not working");
     }
     
 }

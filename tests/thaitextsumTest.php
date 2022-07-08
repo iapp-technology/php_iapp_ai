@@ -1,11 +1,11 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class thaitextsumTest extends \PHPUnit\Framework\TestCase{
+class thaitextsumTest extends TestCase{
  
   public function testThaiTextSum()
     {
@@ -17,7 +17,7 @@ class thaitextsumTest extends \PHPUnit\Framework\TestCase{
       $expect->thai_text_sum("พล.อ.ประยุทธ์ จันทร์โอชา นายกรัฐมนตรีและรัฐมนตรีว่าการกระทรวงกลาโหม กล่าวถึงกระแสข่าววิพากษ์วิจารณ์นายกรัฐมนตรี อ่านกระดาษเปล่าบนเครื่องบินระหว่างเดินทางมาประเทศญี่ปุ่น ว่า แค่นายกรัฐมนตรีอ่านหนังสือยังนำรูปไปวิพากษ์วิจารณ์ได้ กล่าวหาว่าแทนที่จะอ่านหนังสือเตรียมประชุม ทั้งที่ความจริงหนังสือที่หยิบมาอ่านนั้น เป็นหนังสือของสายการบินที่วางไว้ จึงหยิบขึ้นมาดูเท่านั้น", '84');
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Thai Text Summary API is not working.");
     }
     
 }

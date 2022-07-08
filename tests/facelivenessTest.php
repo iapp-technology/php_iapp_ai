@@ -1,11 +1,11 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class facelivenessTest extends \PHPUnit\Framework\TestCase{
+class facelivenessTest extends TestCase{
  
   public function testFaceLiveness()
     {
@@ -17,7 +17,7 @@ class facelivenessTest extends \PHPUnit\Framework\TestCase{
       $expect->faceliveness_detection("media/face.jpg");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Liveness API is not working.");
     }
     
     public function testFaceLivenessInfo()
@@ -30,7 +30,7 @@ class facelivenessTest extends \PHPUnit\Framework\TestCase{
       $expect->info_faceliveness($taskGuid);
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "FaceLiveness Info API is not working.");
     }
 }
 

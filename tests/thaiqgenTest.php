@@ -1,11 +1,12 @@
 <?php 
+use \PHPUnit\Framework\TestCase;
 
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class thaiqgenTest extends \PHPUnit\Framework\TestCase{
+class thaiqgenTest extends TestCase{
  
   public function testThaiQGen()
     {
@@ -16,7 +17,7 @@ class thaiqgenTest extends \PHPUnit\Framework\TestCase{
       $expect->thai_qgen("ผมพูดภาษาไทย");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Thai Question Generator API is not working.");
     }
     
 }

@@ -1,10 +1,10 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
-class idcardTest extends \PHPUnit\Framework\TestCase{
+class idcardTest extends TestCase{
     //  var $apikey;
     // public function apikey($apikey){
     //    $apikey = $GLOBALS['apikey'];
@@ -20,7 +20,7 @@ class idcardTest extends \PHPUnit\Framework\TestCase{
       $expect-> idcard_front("media/id-card-front.jpg");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "IdCard Front API is not working");
     }
 
     public function testIdcardBack()
@@ -34,7 +34,7 @@ class idcardTest extends \PHPUnit\Framework\TestCase{
 
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "IdCard Back API is not working");
     }
     
 }

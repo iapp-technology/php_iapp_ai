@@ -1,11 +1,11 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase; 
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class thaittsTest extends \PHPUnit\Framework\TestCase{
+class thaittsTest extends TestCase{
  
   public function testKaitomtts()
     {
@@ -17,7 +17,7 @@ class thaittsTest extends \PHPUnit\Framework\TestCase{
       $expect->kaitom_tts("แค็วม์เป็นแค่หมู่บ้านใช่หรือไม่");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "ThaiTTS Kaitom API is not working.");
     }
     
     public function testCeetts()
@@ -30,7 +30,7 @@ class thaittsTest extends \PHPUnit\Framework\TestCase{
       $expect->cee_tts("แค็วม์เป็นแค่หมู่บ้านใช่หรือไม่");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "ThaiTTS Cee API is not working.");
     }
 }
 

@@ -1,11 +1,11 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class facedetectTest extends \PHPUnit\Framework\TestCase{
+class facedetectTest extends TestCase{
  
   public function testFaceDetectSingle()
     {
@@ -16,7 +16,7 @@ class facedetectTest extends \PHPUnit\Framework\TestCase{
       $expect->face_detect_single("media/face.jpg","iApp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Detect Single API is not working");
     }
     public function testFaceDetectMulti()
     {
@@ -27,7 +27,7 @@ class facedetectTest extends \PHPUnit\Framework\TestCase{
       $expect->face_detect_multi("media/multi_face.jpg","iApp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Detect Multi API is not working");
     }
 
     public function testFaceDetectConfig()
@@ -39,7 +39,7 @@ class facedetectTest extends \PHPUnit\Framework\TestCase{
       $expect->face_detect_config("0.5","iApp", "iapp");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "Face Detect Config API is not working");
     }
 }
 

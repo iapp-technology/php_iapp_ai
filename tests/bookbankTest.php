@@ -1,11 +1,11 @@
 <?php 
-
+use PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class bookbankTest extends \PHPUnit\Framework\TestCase{
+class bookbankTest extends TestCase{
  
   public function testBookbankOcr()
     {
@@ -17,7 +17,7 @@ class bookbankTest extends \PHPUnit\Framework\TestCase{
       $expect->bookbank_ocr("media/E7393203-15.jpg");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "BookBank API is not working.");
     }
     
 }

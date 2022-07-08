@@ -10,7 +10,7 @@ $object->apikey("ClmXkT5g4kAWkTIyzRbBViyjNCHM33oH");
 // $object->idcard_front("media/id-card-front.jpg");
 // $object->idcard_back("media/id-card-back.jpg");
 // $object->license_plate("media/plate.jpg");
-// $object->bookbank_ocr("media/E7393203-15.jpg");
+$object->bookbank_ocr("media/E7393203-15.jpg");
 // $object->signature_detection("media/signature.jpg");
 // $object->water_file_ocr("media/water-meter.jpg");
 // $object->water_base64_ocr("media/water-meter.txt");

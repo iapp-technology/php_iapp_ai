@@ -1,11 +1,11 @@
 <?php 
-
+use \PHPUnit\Framework\TestCase;
 ini_set("include_path", "app");
 require_once 'app\module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class licenseplateTest extends \PHPUnit\Framework\TestCase{
+class licenseplateTest extends TestCase{
  
   public function testLicensePlate()
     {
@@ -17,7 +17,7 @@ class licenseplateTest extends \PHPUnit\Framework\TestCase{
       $expect-> license_plate("media/plate.jpg");
         // Assert function to test whether expected
         // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "True");
+      $this->assertEquals($expect, $actual, "License Plate OCR API is not working");
     }
     
 }

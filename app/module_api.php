@@ -39,7 +39,8 @@ class api{
          return json_encode($response->getBody());
        }
        else {
-         echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+        
+         echo 'IdCardFrontAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
          $response->getReasonPhrase();
        }
       }
@@ -65,7 +66,7 @@ class api{
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'IdCardBackAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
     }
    }
@@ -91,7 +92,7 @@ class api{
       return json_encode($response->getBody());
      }
      else {
-       echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+       echo 'LicensePlateAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
        $response->getReasonPhrase();
      }
     }
@@ -117,7 +118,7 @@ class api{
       return json_encode($response->getBody());
      }
      else {
-       echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+       echo 'BookBankAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
        $response->getReasonPhrase();
      }
     }
@@ -143,7 +144,7 @@ class api{
        return $response->getBody();
      }
      else {
-       echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+       echo 'FaceLivenessAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
        $response->getReasonPhrase();
      }
     }
@@ -169,7 +170,8 @@ class api{
        return $response->getBody();
      }
      else {
-       echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+
+       echo 'FaceLivenessInfo Error with HTTP status: ' . $response->getStatus() . ' ' .
        $response->getReasonPhrase();
      }
     }
@@ -195,7 +197,7 @@ class api{
         return json_encode($response->getBody());
       }
       else {
-        echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+        echo 'SignatureAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
         $response->getReasonPhrase();
       }
     }
@@ -221,7 +223,7 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'WaterFileAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
   }
 }
@@ -251,7 +253,7 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'WaterBase64API Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
   }
 }
@@ -277,7 +279,7 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'ASR Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
   }
 }
@@ -302,7 +304,7 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'Kaitom Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
   }
 }
@@ -327,7 +329,7 @@ public function cee_tts($text){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'Cee Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
     }
   }
@@ -358,7 +360,7 @@ public function img_bg_removal($filepath){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'ImgBgRemoval Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
     }
   }
@@ -390,7 +392,7 @@ public function thai_qa(){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'ThaiQA Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
     }
   }
@@ -415,7 +417,7 @@ function thai_qgen($text){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'ThaiQGen Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
     }
   }
@@ -461,8 +463,9 @@ public function thai_text_sum($text, $output_length){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'ThaiTextSum Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -505,8 +508,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceV1 Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -536,8 +540,9 @@ try {
     return json_encode($response->getBody());
   } 
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceV1 Config Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -563,8 +568,9 @@ public function face_ver2($filepath1, $filepath2){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceV2 Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -600,8 +606,9 @@ public function face_detect_single($filepath, $company_name ){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceDetect Single Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -637,8 +644,9 @@ public function face_detect_multi($filepath, $company_name){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceDetect Multi Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -670,8 +678,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceDetect Config Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -699,8 +708,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Single Error with  HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -729,8 +739,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Multi Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -758,8 +769,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Facecrop Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -789,8 +801,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Add Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -820,8 +833,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Import Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -851,8 +865,9 @@ try {
     return json_encode($response->getBody());
   }
   else {
-    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    echo 'FaceRecog Check Error with HTTP status: ' . $response->getStatus() . ' ' .
     $response->getReasonPhrase();
+    echo "\n";
   }
 }
 catch(HTTP_Request2_Exception $e) {
@@ -884,8 +899,9 @@ public function face_recog_export($company_name, $password){
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceRecog Export Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -919,8 +935,9 @@ public function face_recog_remove($company_name, $name, $password, $date, $date_
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceRecog Export Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {
@@ -950,8 +967,9 @@ public function face_recog_config($detect_val, $recog_val, $company_name,$passwo
       return json_encode($response->getBody());
     }
     else {
-      echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+      echo 'FaceRecog Config Error with HTTP status: ' . $response->getStatus() . ' ' .
       $response->getReasonPhrase();
+      echo "\n";
     }
   }
   catch(HTTP_Request2_Exception $e) {

@@ -3,7 +3,9 @@ iApp-AI PHP Composer Library
 iApp AI PHP composer library for easier AI implementation.
 
 Free software: MIT license
+
 Documentation: https://docs.iapp.co.th
+
 Request API Key: https://ai.iapp.co.th
 
 Features

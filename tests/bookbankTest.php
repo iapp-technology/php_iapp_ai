@@ -14,7 +14,7 @@ class bookbankTest extends TestCase{
       $result = $actual->bookbank_ocr("media/E7393203-15.jpg");
 
       var_dump($result);
-      $this->assertEquals("success", $result->message, "iApp BookBank OCR API is not working.");
+      $this->assertEquals("Success", $result->message, "iApp BookBank OCR API is not working.");
     }   
 }
 ?>

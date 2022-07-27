@@ -11,13 +11,10 @@ class licenseplateTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $actual->license_plate("media/plate.jpg");
+      $result = $actual->license_plate("media/plate.jpg");
 
-      $expect = new api;
-      $expect-> license_plate("media/plate.jpg");
-        // Assert function to test whether expected
-        // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "License Plate OCR API is not working");
+      var_dump($result);
+      $this->assertEquals('success', $result->message, "License Plate OCR API is not working");
     }
     
 }

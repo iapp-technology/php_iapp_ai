@@ -36,7 +36,7 @@ class api{
       try {
        $response = $request->send();
        if ($response->getStatus() == 200) {
-         return json_encode($response->getBody());
+        return json_decode($response->getBody());
        }
        else {
         
@@ -63,7 +63,7 @@ class api{
    try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'IdCardBackAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -89,7 +89,7 @@ class api{
     try {
      $response = $request->send();
      if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
      }
      else {
        echo 'LicensePlateAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -103,28 +103,28 @@ class api{
 
    public function bookbank_ocr($filepath){
     $request = new HTTP_Request2();
-    $request->setUrl('https://api.iapp.co.th/book-bank-ocr/file');
-    $request->setMethod(HTTP_Request2::METHOD_POST);
-    $request->setConfig(array(
-     'follow_redirects' => TRUE
-    ));
-    $request->setHeader(array(
-     'apikey' => $GLOBALS['apikey']
-    ));
-    $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
-    try {
-     $response = $request->send();
-     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
-     }
-     else {
-       echo 'BookBankAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
-       $response->getReasonPhrase();
-     }
-    }
-    catch(HTTP_Request2_Exception $e) {
-     echo 'Error: ' . $e->getMessage();
-    }
+$request->setUrl('https://api.iapp.co.th/book-bank-ocr/file');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'apikey' => $GLOBALS['apikey']
+));
+$request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
    }
    
    public function faceliveness_detection($filepath){
@@ -141,7 +141,7 @@ class api{
     try {
      $response = $request->send();
      if ($response->getStatus() == 200) {
-       return $response->getBody();
+       return json_decode($response->getBody());
      }
      else {
        echo 'FaceLivenessAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -194,7 +194,7 @@ class api{
     try {
       $response = $request->send();
       if ($response->getStatus() == 200) {
-        return json_encode($response->getBody());
+        return json_decode($response->getBody());
       }
       else {
         echo 'SignatureAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -220,7 +220,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'WaterFileAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -250,7 +250,7 @@ $request->setBody($base64);
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'WaterBase64API Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -276,7 +276,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'ASR Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -301,7 +301,7 @@ $request->setHeader(array(
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'Kaitom Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -326,7 +326,7 @@ public function cee_tts($text){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'Cee Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -357,7 +357,7 @@ public function img_bg_removal($filepath){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'ImgBgRemoval Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -389,7 +389,7 @@ public function thai_qa(){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'ThaiQA Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -414,7 +414,7 @@ function thai_qgen($text){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'ThaiQGen Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -460,7 +460,7 @@ public function thai_text_sum($text, $output_length){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'ThaiTextSum Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -483,29 +483,20 @@ $request->setConfig(array(
 $request->setHeader(array(
   'apikey' => $GLOBALS['apikey']
 ));
-
-// Use default score
-$request->addUpload('file1', $filepath1, $filepath1, '<Content-Type Header>');
-$request->addUpload('file2', $filepath2, $filepath2, '<Content-Type Header>');
-
-// Use score of each company
-$request->addUpload('file1', $filepath1, $filepath1, '<Content-Type Header>');
-$request->addUpload('file2', $filepath2, $filepath2, '<Content-Type Header>');
 $request->addPostParameter(array(
-  'company' => $company_name 
-));
-
-// Use score of each company
-$request->addUpload('file1', $filepath1, $filepath1, '<Content-Type Header>');
-$request->addUpload('file2', $filepath2, $filepath2, '<Content-Type Header>');
-$request->addPostParameter(array(
+  'company' => $company_name,
   'min_score' => $min_score
 ));
+
+// Use score of each company
+$request->addUpload('file1', $filepath1, $filepath1, '<Content-Type Header>');
+$request->addUpload('file2', $filepath2, $filepath2, '<Content-Type Header>');
+
 
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceV1 Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -519,35 +510,36 @@ catch(HTTP_Request2_Exception $e) {
 }
 
 public function face_ver1_config($detect_val, $compare_val, $company_name, $password){
-$request = new HTTP_Request2();
+  $request = new HTTP_Request2();
 
-// Configure Score
-$request->setUrl('https://api.iapp.co.th/face_config_score?detection='.$detect_val.'&comparison='.$compare_val.'&company='.$company_name.'&password='.$password);
-
-// Show Score
-$request->setUrl('https://api.iapp.co.th/face_config_score?detection&comparison&company='.$company_name.'&password='.$password);
-
-$request->setMethod(HTTP_Request2::METHOD_GET);
-$request->setConfig(array(
-  'follow_redirects' => TRUE
-));
-$request->setHeader(array(
-  'apikey' =>  $GLOBALS['apikey']
-));
-try {
-  $response = $request->send();
-  if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
-  } 
-  else {
-    echo 'FaceV1 Config Error with HTTP status: ' . $response->getStatus() . ' ' .
-    $response->getReasonPhrase();
-    echo "\n";
+  $request->setUrl('https://api.iapp.co.th/face_config_score');
+  $request->setMethod(HTTP_Request2::METHOD_POST);
+  $request->setConfig(array(
+    'follow_redirects' => TRUE
+  ));
+  $request->setHeader(array(
+    'apikey' => $GLOBALS['apikey']
+  ));
+  $request->addPostParameter(array(
+    'company' => $company_name,
+    'detection' => $detect_val,
+    'comparison' => $compare_val,
+    'password' => $password
+  ));
+  try {
+    $response = $request->send();
+    if ($response->getStatus() == 200) {
+      return json_decode($response->getBody());
+    }
+    else {
+      echo 'FaceDetect Config Error with HTTP status: ' . $response->getStatus() . ' ' .
+      $response->getReasonPhrase();
+      echo "\n";
+    }
   }
-}
-catch(HTTP_Request2_Exception $e) {
-  echo 'Error: ' . $e->getMessage();
-}
+  catch(HTTP_Request2_Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+  }
 }
 
 public function face_ver2($filepath1, $filepath2){
@@ -565,7 +557,7 @@ public function face_ver2($filepath1, $filepath2){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'FaceV2 Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -631,7 +623,7 @@ public function face_detect_multi($filepath, $company_name){
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'FaceDetect Multi Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -644,28 +636,25 @@ public function face_detect_multi($filepath, $company_name){
   }
 }
 
-public function face_detect_config($detect_val,$company_name, $password ){
+public function face_detect_config($company_name, $password ){
 $request = new HTTP_Request2();
 
-// Configure Score
-$url1 = 'https://api.iapp.co.th/face_config_score?detection='.$detect_val.'&company='.$company_name.'&password='.$password;
-$request->setUrl($url1);
-
-// Show Score
-$url2 = 'https://api.iapp.co.th/face_config_score?detection&company='.$company_name.'&password='.$password;
-$request->setUrl($url2);
-
-$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setUrl('https://api.iapp.co.th/face_config_score');
+$request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'apikey' => $GLOBALS['apikey']
 ));
+$request->addPostParameter(array(
+  'company' => $company_name,
+  'password' => $password
+));
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceDetect Config Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -695,7 +684,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Single Error with  HTTP status: ' . $response->getStatus() . ' ' .
@@ -726,7 +715,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Multi Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -756,7 +745,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Facecrop Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -793,7 +782,7 @@ try {
   // echo("Response");
   // var_dump($response);
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Add Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -825,7 +814,7 @@ $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Import Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -841,23 +830,22 @@ catch(HTTP_Request2_Exception $e) {
 public function face_recog_check($company_name, $password){
 $request = new HTTP_Request2();
 
-// None Save File
-$request->setUrl('https://api.iapp.co.th/face_recog_check?company='.$company_name.'&password='.$password);
-
-// Save File
-$request->setUrl('https://api.iapp.co.th/face_recog_check?company='.$company_name.'&password='.$password.'&save_file');
-
-$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setUrl('https://api.iapp.co.th/face_recog_check');
+$request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'apikey' =>  $GLOBALS['apikey']
 ));
+$request->addPostParameter(array(
+  'company' => $company_name,
+  'password' => $password
+));
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
-    return json_encode($response->getBody());
+    return json_decode($response->getBody());
   }
   else {
     echo 'FaceRecog Check Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -871,27 +859,27 @@ catch(HTTP_Request2_Exception $e) {
 
 }
 
-public function face_recog_export($company_name, $password){
+public function face_recog_export($company_name, $filetype, $password){
  
   $request = new HTTP_Request2();
   
-  // Save CSV File
-  $request->setUrl('https://api.iapp.co.th/face_recog_export?company='.$company_name.'&type_file=csv&password='.$password);
-  
-  // Save Excel File
-  $request->setUrl('https://api.iapp.co.th/face_recog_export?company='.$company_name.'&type_file=excel&password='.$password);
-  
-  $request->setMethod(HTTP_Request2::METHOD_GET);
+  $request->setUrl('https://api.iapp.co.th/face_recog_export');
+  $request->setMethod(HTTP_Request2::METHOD_POST);
   $request->setConfig(array(
     'follow_redirects' => TRUE
   ));
   $request->setHeader(array(
     'apikey' =>  $GLOBALS['apikey']
   ));
+  $request->addPostParameter(array(
+    'company' => $company_name,
+    'type_file' => $filetype,
+    'password' => $password,
+  ));
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return $response->getBody();
     }
     else {
       echo 'FaceRecog Export Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -904,30 +892,28 @@ public function face_recog_export($company_name, $password){
   }
 }
 
-public function face_recog_remove($company_name, $name, $password, $date, $date_faceid){
+public function face_recog_remove($company_name, $name, $password, $date_faceid){
 
   $request = new HTTP_Request2();
   
-  // Remove All Face of This Person name
-  $request->setUrl('https://api.iapp.co.th/face_recog_remove?company='.$company_name.'&name='.$name.'&password='.$password);
-  
-  // Remove All Face of This Person Name in This Date
-  $request->setUrl('https://api.iapp.co.th/face_recog_remove?company='.$company_name.'&name='.$name.'&password='.$password.'&face_id='.$date);
-  
-  // Remove Only Face of This Person Name By and This Face ID
-  $request->setUrl('https://api.iapp.co.th/face_recog_remove?company='.$company_name.'&name='.$name.'&password='.$password.'&face_id='.$date_faceid);
-    
-  $request->setMethod(HTTP_Request2::METHOD_GET);
+  $request->setUrl('https://api.iapp.co.th/face_recog_remove');
+  $request->setMethod(HTTP_Request2::METHOD_POST);
   $request->setConfig(array(
     'follow_redirects' => TRUE
   ));
   $request->setHeader(array(
     'apikey' =>  $GLOBALS['apikey']
   ));
+  $request->addPostParameter(array(
+    'company' => $company_name,
+    'name' => $name,
+    'password' => $password,
+    'face_id' => $date_faceid
+  ));
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'FaceRecog Export Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -940,26 +926,30 @@ public function face_recog_remove($company_name, $name, $password, $date, $date_
   }
 }
 
-public function face_recog_config($detect_val, $recog_val, $company_name,$password){
+public function face_recog_config($company_name,$password){
   $request = new HTTP_Request2();
   
-  // Configure Score
-  $request->setUrl('https://api.iapp.co.th/face_config_score?detection='.$detect_val.'&recognition='.$recog_val.'&company='.$company_name.'&password='.$password);
+  // // Configure Score
+  // $request->setUrl('https://api.iapp.co.th/face_config_score?detection='.$detect_val.'&recognition='.$recog_val.'&company='.$company_name.'&password='.$password);
   
-  // Show Score
-  $request->setUrl('https://api.iapp.co.th/face_config_score?detection&recognition&company='.$company_name.'&password='.$password);
-  
-  $request->setMethod(HTTP_Request2::METHOD_GET);
+  // // Show Score
+  // $request->setUrl('https://api.iapp.co.th/face_config_score?detection&recognition&company='.$company_name.'&password='.$password);
+  $request->setUrl('https://api.iapp.co.th/face_config_score');
+  $request->setMethod(HTTP_Request2::METHOD_POST);
   $request->setConfig(array(
     'follow_redirects' => TRUE
   ));
   $request->setHeader(array(
     'apikey' =>  $GLOBALS['apikey']
   ));
+  $request->addPostParameter(array(
+    'company' => $company_name,
+    'password' => $password
+  ));
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'FaceRecog Config Error with HTTP status: ' . $response->getStatus() . ' ' .

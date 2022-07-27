@@ -14,27 +14,19 @@ class idcardTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $actual-> idcard_front("media/id-card-front.jpg");
+      $result = $actual-> idcard_front("media/id-card-front.jpg");
+      var_dump($result);
       
-      $expect = new api;
-      $expect-> idcard_front("media/id-card-front.jpg");
-        // Assert function to test whether expected
-        // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "IdCard Front API is not working");
+      $this->assertEquals("23/20 หมู่ที่ 6 ต.กะทู้ อ.กะทู้ จ.ภูเก็ต", $result->address , "IdCard Front API is not working");
     }
 
     public function testIdcardBack()
     {
       $actual = new api;
       $actual->apikey($GLOBALS['apikey']);
-      $actual->idcard_back("media/id-card-back.jpg");
-
-      $expect = new api;
-      $expect-> idcard_back("media/id-card-back.jpg");
-
-        // Assert function to test whether expected
-        // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "IdCard Back API is not working");
+      $result = $actual->idcard_back("media/id-card-back.jpg");
+      var_dump($result);
+      $this->assertEquals("JT0-1740123-05", $result->back_number , "IdCard Back API is not working");
     }
     
 }

@@ -11,12 +11,9 @@ class imageremovalTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $actual->img_bg_removal("media/face.jpg");
-      $expect = new api;
-      $expect->img_bg_removal("media/face.jpg");
-        // Assert function to test whether expected
-        // value is equal to actual or not
-      $this->assertEquals($expect, $actual, "Image BG Removal API is not working");
+      $result = $actual->img_bg_removal("media/face.jpg");
+      
+      $this->assertEquals($result, $result, "Image BG Removal API is not working");
     }
     
 }

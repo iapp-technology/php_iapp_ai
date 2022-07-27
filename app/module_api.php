@@ -2,8 +2,8 @@
 // namespace App;
 
 ini_set("include_path", "vendor/pear/http_request2/");
-require_once 'HTTP\Request2.php';
-require 'vendor\autoload.php';      
+require_once 'HTTP/Request2.php';
+require 'vendor/autoload.php';      
 
 /**
 *  A sample class
@@ -578,7 +578,7 @@ public function face_ver2($filepath1, $filepath2){
   }
 }
 
-public function face_detect_single($filepath, $company_name ){
+public function face_detect_single($filepath){
   $request = new HTTP_Request2();
   $request->setUrl('https://api.iapp.co.th/face_detect_single');
   $request->setMethod(HTTP_Request2::METHOD_POST);
@@ -589,21 +589,11 @@ public function face_detect_single($filepath, $company_name ){
     'apikey' => $GLOBALS['apikey']
   ));
 
-  // Use score of each company
-  $request->addPostParameter(array(
-    'company' => $company_name 
-  ));
-
-  // Use default score
-  //$request->addPostParameter(array(
-  //  'company' => '{Your Company Name}' 
-  //));
-
   $request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
   try {
     $response = $request->send();
     if ($response->getStatus() == 200) {
-      return json_encode($response->getBody());
+      return json_decode($response->getBody());
     }
     else {
       echo 'FaceDetect Single Error with HTTP status: ' . $response->getStatus() . ' ' .
@@ -794,9 +784,14 @@ $request->addPostParameter(array(
   'name' => $name,
   'password' => $password
 ));
-$request->addUpload('file', $filepath, '<Content-Type Header>');
+$request->addUpload('file', $filepath, $filepath, '<Content-Type Header>');
+// echo("Request");
+// var_dump($request);
+
 try {
   $response = $request->send();
+  // echo("Response");
+  // var_dump($response);
   if ($response->getStatus() == 200) {
     return json_encode($response->getBody());
   }

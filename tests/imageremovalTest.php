@@ -1,7 +1,7 @@
 <?php 
-use\PHPUnit\Framework\TestCase; 
+use \PHPUnit\Framework\TestCase; 
 ini_set("include_path", "app");
-require_once 'app\module_api.php';
+require_once 'app/module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 

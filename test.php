@@ -2,7 +2,7 @@
 // namespace App;
 
 ini_set("include_path", "app");
-require_once 'app\module_api.php';
+require_once 'app/module_api.php';
 
 $object = new api;
 $object->apikey("ClmXkT5g4kAWkTIyzRbBViyjNCHM33oH");

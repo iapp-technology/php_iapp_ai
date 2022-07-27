@@ -35,7 +35,8 @@
      
     "require": {
         "phpunit/phpunit": "^9.5",
-        "pear/http_request2": "^2.5"
+        "pear/http_request2": "^2.5",
+                "pear/net_url2": "^2.2"
     },
     "autoload": {
         "psr-4": {

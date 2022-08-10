@@ -11,7 +11,7 @@ class bookbankTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $result = $actual->bookbank_ocr("media/E7393203-15.jpg");
+      $result = $actual->bookbank_ocr("media/1.jpg");
 
       var_dump($result);
       $this->assertEquals("Success", $result->message, "iApp BookBank OCR API is not working.");

@@ -12,9 +12,10 @@ class thaiqgenTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $result = $actual->thai_qgen("ผมพูดภาษาไทย");
+      $result = $actual->thai_qgen("แค็วม์เป็นแค่หมู่บ้านใช่หรือไม่");
       var_dump($result);
-      $this->assertEquals($result, $result, "Thai Question Generator API is not working.");
+      
+      $this->assertObjectHasAttribute('context', $result);
     }
     
 }

@@ -4,6 +4,8 @@ ini_set("include_path", "app");
 require_once 'app/module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
+$taskGuid='';
+$GLOBALS['taskGuid'] = $taskGuid;
 
 
 class facelivenessTest extends TestCase{
@@ -13,21 +15,31 @@ class facelivenessTest extends TestCase{
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
       $result = $actual->faceliveness_detection("media/face.jpg");
-      // $taskGuid = $actual;
+      $GLOBALS['taskGuid'] = $result;
       
-      var_dump($result);
-      $this->assertEquals($result, $result, "Face Liveness API is not working.");
+      // var_dump($result);
+      $this->assertIsString($result);
+      return $result;
     }
-    
-    public function testFaceLivenessInfo()
+
+  public function testFaceLivenessInfo()
     {
-        global $result;
+      $GLOBALS['taskGuid'];
+      // print_r($GLOBALS['taskGuid']);
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $final = $actual->info_faceliveness($result);
-      var_dump($final);
-      $this->assertEquals($final, $final, "FaceLiveness Info API is not working.");
-    }
+      $status = NULL;
+      while($status == NULL){
+        $resp = $actual->info_faceliveness($GLOBALS['taskGuid']);
+        $obj = json_decode($resp);
+        $tmp  = (object)$obj;
+        $status = $tmp ->status;
+        // var_dump($status);
+      }
+      // var_dump($resp);
+    $this->assertEquals('C', $tmp->status, "FaceLiveness Info API is not working.");
+  }   
+    
 }
 
 ?>

@@ -15,7 +15,7 @@ class thaiasrTest extends TestCase{
       $result = $actual->asr("media/data.wav");
 
       var_dump($result);
-      $this->assertEquals($result, $result, "Thai ASR API is not working");
+      $this->assertObjectHasAttribute('text', $result);
     }
     
 }

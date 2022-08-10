@@ -46,7 +46,7 @@ Testing all methods.
 ./vendor/bin/phpunit
 ```
 
-Testing a single method.
+Testing a single method.s
 ```bash
 ./vendor/bin/phpunit --filter testFaceDetectSingle
 ```

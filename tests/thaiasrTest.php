@@ -12,10 +12,11 @@ class thaiasrTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $result = $actual->asr("media/data.wav");
-
+      $result = $actual->asr("media/2ppl.wav");
+  
       var_dump($result);
-      $this->assertObjectHasAttribute('text', $result);
+      $this->assertIsArray($result);
+      // $this->assertObjectHasAttribute('speech', $tmp->speech);
     }
     
 }

@@ -35,15 +35,5 @@ class thaittsTest extends TestCase{
     }
 }
 
-// function binaryToString($binary)
-// {
-//     $binaries = explode(' ', $binary);
- 
-//     $string = null;
-//     foreach ($binaries as $binary) {
-//         $string .= pack('a*', dechex(bindec($binary)));
-//     }
- 
-//     return $string;    
-// }
+
 ?>

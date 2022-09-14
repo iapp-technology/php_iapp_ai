@@ -5,16 +5,16 @@ require_once 'iapp-php-composer/module_api.php';
 include 'unittest.php';
 $GLOBALS['apikey'] = $apikey;
 
-class bookbankTest extends TestCase{
+class passportTest extends TestCase{
  
-  public function testBookbankOcr()
+  public function testPassportOcr()
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $result = $actual->bookbank_ocr("media/bookbank.jpg");
+      $result = $actual->passport_ocr("media/ukr-passport.jpeg");
 
       var_dump($result);
-      $this->assertEquals("Success", $result->message, "iApp BookBank OCR API is not working.");
+      $this->assertIsString($result);
     }   
 }
 ?>

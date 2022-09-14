@@ -1,28 +1,29 @@
 {
     
-        "name": "gino-pane/composer-package-template",
-        "description": "Basic composer package template for creating other packages.",
+        "name": "iapp-ai/iapp-php-composer",
+        "description": "iApp AI APIs PHP Composer Package",
         "homepage": "http://github.com/GinoPane/composer-package-template",
         "keywords": [
-            "template",
+            "iapp",
+            "iapp ai",
+            "iapp_ai",
+            "iapp_ai.*",
+            "iapp-ai apis",
             "composer",
-            "package",
-            "skeleton",
-            "boilerplate",
-            "composer template",
-            "package template",
-            "composer package template"
+            "php",
+            "composer package",
+            "iapp-ai/iapp-php-composer"
         ],
         "license": "MIT",
         "authors": [
             {
-                "name": "Darwin Biler",
-                "email": "buonzz@gmail.com"
+                "name": "Kobkrit Viriyayudhakorn",
+                "email": "kobkrit@iapp.co.th"
             },
             {
                 "name": "",
                 "homepage": "http://sergey.karavay.name",
-                "email": "sergey.karavay@gmail.com",
+                "email": "kobkrit@iapp.co.th",
                 "role": "Developer"
             }
         ],
@@ -40,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "iapp-php-composer\\": "iapp-php-composer/"
         }
     }
 }

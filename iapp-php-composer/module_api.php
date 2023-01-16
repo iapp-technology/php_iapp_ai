@@ -24,59 +24,87 @@ class api{
 
   ################### Image Recognition ####################
   public function idcard_front($filepath){
-      $filename = basename($filepath);
-      $request = new HTTP_Request2();
-      $request->setUrl('https://api.iapp.co.th/thai-national-id-card/v3/front');
-      $request->setMethod(HTTP_Request2::METHOD_POST);
-      $request->setConfig(array(
-       'follow_redirects' => TRUE));
-      $request->setHeader(array(
-       'apikey' => $GLOBALS['apikey']
-      ));
-      $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
-      try {
-       $response = $request->send();
-       if ($response->getStatus() == 200) {
-        return json_decode($response->getBody());
-       }
-       else {
-        
-         echo 'IdCardFrontAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
-         $response->getReasonPhrase();
-       }
-      }
-      catch(HTTP_Request2_Exception $e) {
-       echo 'Error: ' . $e->getMessage();
-      }
-   }
-
-   public function idcard_back($filepath){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
-   $request->setUrl('https://api.iapp.co.th/thai-national-id-card/v3/back');
-   $request->setMethod(HTTP_Request2::METHOD_POST);
-   $request->setConfig(array(
-    'follow_redirects' => TRUE
-   ));
-   $request->setHeader(array(
-    'apikey' => $GLOBALS['apikey']
-   ));
-   $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
-   try {
-    $response = $request->send();
-    if ($response->getStatus() == 200) {
+    $request->setUrl('https://api.iapp.co.th/thai-national-id-card/v3/front');
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE));
+    $request->setHeader(array(
+      'apikey' => $GLOBALS['apikey']
+    ));
+    $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
       return json_decode($response->getBody());
+      }
+      else {
+      
+        echo 'IdCardFrontAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
     }
-    else {
-      echo 'IdCardBackAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
-      $response->getReasonPhrase();
+    catch(HTTP_Request2_Exception $e) {
+      echo 'Error: ' . $e->getMessage();
     }
-   }
-   catch(HTTP_Request2_Exception $e) {
-    echo 'Error: ' . $e->getMessage();
-   }
   }
-  public function license_plate($filepath){
+
+  public function idcard_front_photocopied($filepath){
+    $filename = basename($filepath);
+    $request = new HTTP_Request2();
+    $request->setUrl('https://api.iapp.co.th/thai-national-id-card-with-signature/front');
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE));
+    $request->setHeader(array(
+      'apikey' => $GLOBALS['apikey']
+    ));
+    $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
+      return json_decode($response->getBody());
+      }
+      else {
+      
+        echo 'IdCardFrontAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
+    }
+    catch(HTTP_Request2_Exception $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+  }
+
+  public function idcard_back($filepath){
+    $filename = basename($filepath);
+    $request = new HTTP_Request2();
+    $request->setUrl('https://api.iapp.co.th/thai-national-id-card/v3.5/back');
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE
+    ));
+    $request->setHeader(array(
+      'apikey' => $GLOBALS['apikey']
+    ));
+    $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
+        return json_decode($response->getBody());
+      }
+      else {
+        echo 'IdCardBackAPI Error with HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
+    }
+    catch(HTTP_Request2_Exception $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+  }
+
+  public function license_plate_ocr($filepath){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/license-plate-recognition/file');
@@ -102,6 +130,7 @@ class api{
      echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function bookbank_ocr($filepath){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -130,7 +159,7 @@ class api{
    }
   
   
-   public function passport_ocr($filepath){
+  public function passport_ocr($filepath){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/passport-ocr/ocr');
@@ -291,6 +320,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function power_ocr($filepath){
     $request = new HTTP_Request2();
     $request->setUrl('https://titipakorn.xyz/ocr/api/predict/ocr_detect/');
@@ -305,7 +335,7 @@ class api{
     $file = fopen($filepath, "r");
     $base64 = fread($file, filesize($filepath));
     $text = '{"image": "' .$base64.'"}';
-    // print_r($text);
+    print_r($text);
     $request->setBody($text);
     
     try {
@@ -322,6 +352,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function img_bg_removal($filepath){
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/face-extractor/predict');
@@ -408,6 +439,7 @@ class api{
      echo 'Error: ' . $e->getMessage();
     }
   }
+  
   public function face_ver1($filepath1, $filepath2, $company_name, $min_score){
     $filename1 = basename($filepath1);
     $filename2 = basename($filepath2);
@@ -445,6 +477,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_ver1_config($detect_val, $compare_val, $company_name, $password){
     $request = new HTTP_Request2();
 
@@ -477,6 +510,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_ver2($filepath1, $filepath2){
     $filename1 = basename($filepath1);
     $filename2 = basename($filepath2);
@@ -506,6 +540,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_detect_single($filepath){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -534,6 +569,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_detect_multi($filepath, $company_name){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -572,6 +608,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_detect_config($company_name, $password ){
     $request = new HTTP_Request2();
 
@@ -602,6 +639,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_single($filepath, $company_name){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -632,6 +670,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_multi($filepath, $company_name){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -662,6 +701,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_facecrop($filepath, $company_name){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -692,6 +732,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_add($filepath, $company_name, $name, $password){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -729,6 +770,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_import($filepath, $company_name, $password){
     $filename = basename($filepath);
     $request = new HTTP_Request2();
@@ -760,6 +802,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_check($company_name, $password){
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/face_recog_check');
@@ -790,6 +833,7 @@ class api{
     }
 
   }
+
   public function face_recog_export($company_name, $filetype, $password){
     $request = new HTTP_Request2();
     
@@ -821,10 +865,10 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_remove($company_name, $name, $password, $date_faceid){
 
     $request = new HTTP_Request2();
-    
     $request->setUrl('https://api.iapp.co.th/face_recog_remove');
     $request->setMethod(HTTP_Request2::METHOD_POST);
     $request->setConfig(array(
@@ -854,6 +898,7 @@ class api{
       echo 'Error: ' . $e->getMessage();
     }
   }
+
   public function face_recog_config($company_name,$password){
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/face_config_score');
@@ -933,7 +978,8 @@ class api{
     catch(HTTP_Request2_Exception $e) {
       echo 'Error: ' . $e->getMessage();
     }
-  }   
+  }
+
   public function cee_tts($text){
     $request = new HTTP_Request2();
     $request->setUrl('https://api.iapp.co.th/thai-tts-cee/tts?text='.$text);
@@ -1095,7 +1141,63 @@ class api{
   //   }
   // }
 
+ public function license_plate_base64($filepath){
+    $request = new HTTP_Request2();
+    $request->setUrl('https://api.iapp.co.th/iapp_license_plate_recognition_v1_base64');
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE
+    ));
+    $request->setHeader(array(
+      'apikey' =>  $GLOBALS['apikey'],
+      'Content-Type' => 'application/json'
+    ));
+    $file = fopen($filepath, "r");
+    $base64 = fread($file, filesize($filepath));
+    $text = '{"image": "' .$base64.'"}';
+    $request->setBody($text);
 
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
+        return json_decode($response->getBody());
+      }
+      else {
+        echo 'Plate OCR Error with HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
+    }
+    catch(HTTP_Request2_Exception $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+  }
+
+  public function driver_license($filepath){
+    $filename = basename($filepath);
+    $request = new HTTP_Request2();
+    $request->setUrl('https://api.iapp.co.th/thai-driver-license-ocr');
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE
+    ));
+    $request->setHeader(array(
+      'apikey' => $GLOBALS['apikey']
+    ));
+    $request->addUpload('file', $filepath, $filename, '<Content-Type Header>');
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
+        return  json_decode($response->getBody());
+      }
+      else {
+        echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
+    }
+    catch(HTTP_Request2_Exception $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+  }
 
 
 }

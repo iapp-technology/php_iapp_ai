@@ -11,16 +11,16 @@ Request API Key: https://ai.iapp.co.th
 Features
 --------
 * iApp Image Recognition Service
-  * Thai National ID Card OCR
-  * Passport OCR
-  * Thai Vehicle License Plate
+  * Thai National ID Card OCR (Support Card and Photocopied)[NEW]
+  * Thai Driver License Card OCR [NEW]
+  * Thai Vehicle License Plate (Support Card and Photocopied)
   * Book Bank OCR
   * Passport OCR [NEW]
   * Face Verification (Comparison)
   * Face Recognition
   * Face Detection
   * Face Passive Liveness Detection
-  * Document OCR [NEW]
+  * Thai Document OCR [NEW]
   * Power Meter OCR
   * Water Meter OCR
   * Image Background Remover

@@ -22,7 +22,7 @@ class waterocrTest extends TestCase{
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
       $result = $actual->water_base64_ocr("media/water-meter.txt");
-
+      var_dump($result);
       $this->assertEquals('success', $result->message, "Water base64 OCR API is not working.");
     }
     

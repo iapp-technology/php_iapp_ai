@@ -11,11 +11,20 @@ class licenseplateTest extends TestCase{
     {
       $actual = new api;
       $actual-> apikey($GLOBALS['apikey']);
-      $result = $actual->license_plate("media/plate.jpg");
+      $result = $actual->license_plate_ocr("media/plate.jpg");
 
       var_dump($result);
       $this->assertEquals('success', $result->message, "License Plate OCR API is not working");
     }
+  
+  public function testLicenseBase64()
+  {
+    $actual = new api;
+    $actual-> apikey($GLOBALS['apikey']);
+    $result = $actual->license_plate_base64("media/plate.txt");
+
+    $this->assertEquals('success', $result->message, "License Plate OCR API is not working");
+  }
     
 }
 

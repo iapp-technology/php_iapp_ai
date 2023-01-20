@@ -1,6 +1,6 @@
 <?php
 
 
-$apikey = "rL3eZA5M3Or78dKgYWtXh3EDylXpao68";
+$apikey = "XXX Your API Key XXX";
 
 ?>

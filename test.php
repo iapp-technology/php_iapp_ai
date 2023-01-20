@@ -7,12 +7,12 @@ require_once 'iapp-php-composer/module_api.php';
 ################### API KEY ####################
 
 $object = new api;
-// $object->apikey("XXX Your API Key XXX");
-$object->apikey("rL3eZA5M3Or78dKgYWtXh3EDylXpao68");
+$object->apikey("XXX Your API Key XXX");
 
 ################### Image Recognition ####################
 
-// $object->idcard_front("media/id-card-front.jpg");
+$res = $object->idcard_front("media/id-card-front.jpg");
+var_dump($res);
 // $object->idcard_front_photocopied("media/copy_of_thai_idcard_trial.png");
 // $object->idcard_back("media/id-card-back.jpg");
 

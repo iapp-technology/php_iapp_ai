@@ -7,12 +7,10 @@
             "iapp",
             "iapp ai",
             "iapp_ai",
-            "iapp_ai.*",
             "iapp-ai apis",
             "composer",
             "php",
-            "composer package",
-            "iapp-ai/iapp-php-composer"
+            "composer package"
         ],
         "license": "MIT",
         "authors": [
